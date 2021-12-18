@@ -6,7 +6,7 @@ from pdf2image import convert_from_path
 import os
 
 # path to the pdf
-PDF_file = 'p2.pdf'
+PDF_file = 'UE.pdf'
 
 pages = convert_from_path(PDF_file)
 
@@ -24,7 +24,7 @@ for page in pages:
 print('pdf to image conversion done!')
 
 # Start recognizing text in images
-filelimit = image_counter - 1
+file_limit = image_counter
 
 outfile = "text.txt"
 
@@ -32,7 +32,7 @@ outfile = "text.txt"
 f = open(outfile, 'a')
 
 # Iterate from 1 to total number of pages
-for i in range(1, filelimit + 1):
+for i in range(1, file_limit):
     filename = "page_" + str(i) + '.jpg'
     
     text = str(((pytesseract.image_to_string(Image.open(filename)))))
@@ -42,4 +42,5 @@ for i in range(1, filelimit + 1):
     f.write(text)
 
 f.close()
+
 print('Compelted!')
