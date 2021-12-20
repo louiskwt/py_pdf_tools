@@ -3,3 +3,4 @@ env/
 **.jpg
 .DS_Store
 output.txt
+**.jpeg
